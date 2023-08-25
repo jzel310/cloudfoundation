@@ -9,11 +9,11 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   dns_prefix = "aks"
 
   resource_group_name = azurerm_resource_group.rg.name
-  kubernetes_version  = "1.27"
+  kubernetes_version  = "1.27.3"
 
   default_node_pool {
     name       = "aks"
-    node_count = "1"
+    node_count = "2"
     vm_size    = "Standard_B2s"
   }
 
