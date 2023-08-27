@@ -1,9 +1,12 @@
 name: Deploy Infrastructure
 
-# on:
-#   pull_request:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
 
 on:
   push
@@ -44,4 +47,15 @@ jobs:
         ARM_CLIENT_SECRET: "${{ secrets.AZURE_CLIENT_SECRET }}"
       working-directory: sandbox-aks # Use your environment folder
       shell: bash     
+
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: terraform apply -input=false tf.plan
+      env:
+        ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }} 
+        ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        ARM_SUBSCRIPTION_ID: "[Your Subscription ID]"
+        ARM_TENANT_ID: "[Your Tenant ID]"
+      working-directory: sandbox-aks # Use your environment folder
+      shell: bash
 
