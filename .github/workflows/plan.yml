@@ -26,10 +26,10 @@ jobs:
       id: init
       run: terraform init
       env:
-        CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
-        SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-        TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
-        CLIENT_SECRET: "${{ secrets.AZURE_CLIENT_SECRET }}"
+        ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
+        ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+        ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
+        ARM_CLIENT_SECRET: "${{ secrets.AZURE_CLIENT_SECRET }}"
       working-directory: sandbox-aks
       shell: bash
 
@@ -38,10 +38,10 @@ jobs:
       run: |
         terraform plan -input=false -no-color -out tf.plan
       env:
-        CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
-        SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-        TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
-        CLIENT_SECRET: "${{ secrets.AZURE_CLIENT_SECRET }}"
+        ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
+        ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+        ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
+        ARM_CLIENT_SECRET: "${{ secrets.AZURE_CLIENT_SECRET }}"
       working-directory: sandbox-aks # Use your environment folder
       shell: bash     
 
