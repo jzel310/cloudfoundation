@@ -6,7 +6,7 @@ terraform {
   #     source  = "hashicorp/azurerm"
   #     version = "=3.67.0"
   #   }
-  }
+  # }
 
   backend "azurerm" {
     resource_group_name  = "sandbox-demo"
