@@ -16,7 +16,6 @@ jobs:
 
     - name: Checkout Repo
       uses: actions/checkout@v1
-    - name: Terraform version
     - run: terraform --version
 
     # - name: Terraform Init
